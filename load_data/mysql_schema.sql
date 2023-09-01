@@ -1,62 +1,47 @@
-CREATE DATABASE IF NOT EXISTS movie_db;
-USE movie_db;
-DROP TABLE IF EXISTS movies_metadata;
-CREATE TABLE movies_metadata (
-  id INT(10) NOT NULL,
-  adult VARCHAR(5) CHECK (adult IN ('True', 'False')),
-  belongs_to_collection VARCHAR(255),
-  budget INT(11),
-  genres VARCHAR(255),
-  homepage VARCHAR(255),
-  imdb_id VARCHAR(255),
-  original_language VARCHAR(5),
-  original_title VARCHAR(255),
-  overview VARCHAR(10000),
-  popularity FLOAT,
-  poster_path VARCHAR(255),
-  production_companies VARCHAR(1000),
-  production_countries VARCHAR(1000),
-  release_date DATE,
-  revenue INT(11),
-  runtime INT(5),
-  spoken_languages VARCHAR(1000),
-  status VARCHAR(255),
-  tagline VARCHAR(255),
-  title VARCHAR(255),
-  video VARCHAR(5) CHECK (video IN ('True', 'False')),
-  vote_average FLOAT,
-  vote_count INT(11),
+CREATE DATABASE IF NOT EXISTS movies_db;
+USE movies_db;
+DROP TABLE IF EXISTS metadata;
+CREATE TABLE metadata (
+  title VARCHAR(2000),
+  directedBy VARCHAR(2000),
+  starring VARCHAR(2000),
+  avgRating FLOAT,
+  imdbId INT(15),
+  item_id INT(15) NOT NULL,
+  PRIMARY KEY (item_id)
+);
+
+CREATE TABLE IF NOT EXISTS survey_answers (
+  user_id INT(15) NOT NULL,
+  item_id INT(15) NOT NULL,
+  tag_id INT(15) NOT NULL,
+  score FLOAT,
+  PRIMARY KEY (user_id, item_id, tag_id)
+);
+
+CREATE TABLE IF NOT EXISTS tag_count (
+  item_id INT(15),
+  tag_id INT(15),
+  num INT(15),
+  PRIMARY KEY (item_id, tag_id)
+);
+
+CREATE TABLE IF NOT EXISTS tags (
+  tag VARCHAR(50),
+  id INT(15),
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS keywords;
-CREATE TABLE keywords (
-  id INT(10) NOT NULL,
-  keywords VARCHAR(10000),
-  PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS reviews (
+  item_id INT(15),
+  txt VARCHAR(2000),
+  PRIMARY KEY (item_id)
 );
 
-DROP TABLE IF EXISTS links;
-CREATE TABLE links (
-  id INT(10) NOT NULL,
-  imdb_id INT(10),
-  tmdb_id INT(10),
-  PRIMARY KEY (id)
-);
-
-DROP TABLE IF EXISTS ratings;
-CREATE TABLE ratings (
-  user_id INT(10) NOT NULL,
-  movie_id INT(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS ratings(
+  item_id INT(15),
+  user_id INT(15),
   rating FLOAT,
-  timestamp INT(20),
-  PRIMARY KEY (user_id, movie_id)
+  PRIMARY KEY (item_id, user_id)
 );
-
-DROP TABLE IF EXISTS credits;
-CREATE TABLE credits (
-  id INT(10) NOT NULL,
-  cast VARCHAR(10000),
-  crew VARCHAR(10000),
-  PRIMARY KEY (id)
-);
+ 
