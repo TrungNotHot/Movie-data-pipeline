@@ -1,3 +1,4 @@
-
-*.json
-movie_dataset_public_final/raw/.DS_Store
+mysql/*
+minio/*
+postgresql/*
+movie_dataset/archive/*
