@@ -1,13 +1,34 @@
 import pandas as pd
+from dagster import IOManager, OutputContext, InputContext
 from sqlalchemy import create_engine
+from contextlib import contextmanager
 
 
-class MySQLIOManager:
+@contextmanager
+def connect_mysql(config):
+    conn_info = (
+            f"mysql+pymysql://{config['user']}:{config['password']}"
+            + f"@{config['host']}:{config['port']}"
+            + f"/{config['database']}"
+    )
+    db_conn = create_engine(conn_info)
+    try:
+        yield db_conn
+    except Exception:
+        print("Error occurred while connecting to MySQL")
+
+
+class MySQLIOManager(IOManager):
     def __init__(self, config):
         self._config = config
-        self.engine = create_engine(
-            "mysql+pymysql://admin:admin123@localhost:3306/brazillian_ecommerce?charset=utf8mb4")
+
+    def handle_output(self, context: OutputContext, obj: pd.DataFrame):
+        pass
+
+    def load_input(self, context: InputContext) -> pd.DataFrame:
+        pass
 
     def extract_data(self, sql: str) -> pd.DataFrame:
-        pd.DataFrame = pd.read_sql_query(sql, self.engine)
-        return pd.DataFrame
+        with connect_mysql(self._config) as db_conn:
+            pd_data = pd.read_sql_query(sql, db_conn)
+            return pd_data
