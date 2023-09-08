@@ -9,9 +9,12 @@ services:
     container_name: elt_pipeline
     image: elt_pipeline:latest
     volumes:
-      - ./elt_pipeline:/opt/dagster/app/elt_pipeline
+      - ./elt_pipeline:/opt/dagster/app
+      - ./elt_pipeline/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
     env_file:
       - env
+    depends_on:
+      - spark-notebook
     networks:
       - de_network
   de_mysql:
@@ -111,6 +114,59 @@ services:
     networks:
       - de_network
 
+  spark-master:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    image: spark_master:latest
+    container_name: spark-master
+    volumes:
+      - ./spark/spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+    expose:
+      - "7077"
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    environment:
+      - SPARK_MODE=master
+      - SPARK_LOCAL_IP=spark-master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    networks:
+      - de_network
+  spark-worker:
+    image: docker.io/bitnami/spark:3.3
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+    deploy:
+      replicas: 2
+    networks:
+      - de_network
+  spark-notebook:
+    build:
+      context: ./notebooks
+      dockerfile: ./Dockerfile
+    container_name: "spark-notebook"
+    user: root
+    environment:
+      - JUPYTER_ENABLE_LAB="yes"
+      - GRANT_SUDO="yes"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./notebooks/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+    networks:
+      - de_network
 
 networks:
   de_network:

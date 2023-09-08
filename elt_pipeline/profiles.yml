@@ -1,0 +1,13 @@
+dbt_transform:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 1
+      host: de_psql
+      port: 5432
+      user: admin
+      pass: admin123
+      dbname: movies_db
+      schema: analytics
+  target: dev

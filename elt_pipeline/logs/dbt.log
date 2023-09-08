@@ -1,0 +1,55 @@
+
+
+============================== 2023-09-08 15:40:35.317282 | 16de3e44-5ed5-4666-bcd9-b094405047df ==============================
+[0m15:40:35.317295 [info ] [MainThread]: Running with dbt=1.3.0
+[0m15:40:35.317793 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/trung/Study/AIDE/project/elt_pipeline', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m15:40:35.317987 [debug] [MainThread]: Tracking: tracking
+[0m15:40:35.323328 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f31872892e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f31872893d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3187289370>]}
+[0m15:40:46.026856 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3187289370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3187289400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f31872f81f0>]}
+[0m15:40:46.027280 [debug] [MainThread]: Flushing usage events
+[0m15:40:47.198367 [error] [MainThread]: Encountered an error:
+'utf-8' codec can't decode byte 0xc3 in position 6: invalid continuation byte
+[0m15:40:47.200916 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 135, in main
+    results, succeeded = handle_and_check(args)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 198, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 245, in run_from_args
+    results = task.run()
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/task/init.py", line 313, in run
+    project_name = self.get_valid_project_name()
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/task/init.py", line 270, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/click/termui.py", line 140, in prompt_func
+    return f(" ")
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xc3 in position 6: invalid continuation byte
+
+
+
+============================== 2023-09-08 15:41:25.092646 | 8427089d-1ad9-488f-9d20-180dcddadfbf ==============================
+[0m15:41:25.092656 [info ] [MainThread]: Running with dbt=1.3.0
+[0m15:41:25.093092 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/trung/Study/AIDE/project/elt_pipeline', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m15:41:25.093289 [debug] [MainThread]: Tracking: tracking
+[0m15:41:25.097715 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8aff1492b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8aff1493a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8aff149340>]}
+[0m15:41:32.814003 [debug] [MainThread]: Starter project path: /home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/include/starter_project
+[0m15:41:36.413180 [info ] [MainThread]: Profile dbt_transform written to /home/trung/Study/AIDE/project/elt_pipeline/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m15:41:36.413627 [info ] [MainThread]: 
+Your new dbt project "dbt_transform" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:41:36.414055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8afef61970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8afef61a30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8afef61790>]}
+[0m15:41:36.414361 [debug] [MainThread]: Flushing usage events

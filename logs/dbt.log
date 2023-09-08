@@ -1,0 +1,28 @@
+
+
+============================== 2023-09-08 15:38:13.551847 | adfbf7f3-154d-4099-97cd-cb9f20340054 ==============================
+[0m15:38:13.551857 [info ] [MainThread]: Running with dbt=1.3.0
+[0m15:38:13.552277 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/trung/Study/AIDE/project', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m15:38:13.552495 [debug] [MainThread]: Tracking: tracking
+[0m15:38:13.557675 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54ac9310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54ac9400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54ac93a0>]}
+[0m15:38:33.396262 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54ac9340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54ac9490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4f54b38250>]}
+[0m15:38:33.396696 [debug] [MainThread]: Flushing usage events
+[0m15:38:34.522336 [error] [MainThread]: Encountered an error:
+
+[0m15:38:34.526224 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 135, in main
+    results, succeeded = handle_and_check(args)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 198, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/main.py", line 245, in run_from_args
+    results = task.run()
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/task/init.py", line 313, in run
+    project_name = self.get_valid_project_name()
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/dbt/task/init.py", line 270, in get_valid_project_name
+    name = click.prompt("Enter a name for your project (letters, digits, underscore)")
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "/home/trung/anaconda3/envs/DataE/lib/python3.9/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
