@@ -1,4 +1,4 @@
-mysql/*
-minio/*
 postgresql/*
 movie_dataset/archive/*
+minio/*
+mysql/*
