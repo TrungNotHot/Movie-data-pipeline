@@ -1,28 +1,9 @@
+from dagster_dbt import DbtCliClientResource, dbt_cli_resource
 from .resources.minio_io_manager import MinIOIOManager
 from .resources.mysql_io_manager import MySQLIOManager
 from .resources.psql_io_manager import PostgreSQLIOManager
-from dagster import Definitions
-from .assets.bronze_layer import (
-    bronze_movies,
-    bronze_keywords,
-    bronze_links,
-    bronze_credits,
-    bronze_ratings,
-)
-from .assets.silver_layer import (
-    silver_cleaned_movies,
-    silver_cleaned_keywords,
-    silver_cleaned_links,
-    silver_cleaned_credits,
-    silver_cleaned_ratings,
-)
-from .assets.warehouse_layer import (
-    warehouse_credits,
-    warehouse_keywords,
-    warehouse_links,
-    warehouse_movies,
-    warehouse_ratings,
-)
+from dagster import Definitions, load_assets_from_modules, file_relative_path
+from . import assets
 
 MYSQL_CONFIG = {
     # "host": "localhost",
@@ -46,28 +27,26 @@ PSQL_CONFIG = {
     "user": "admin",
     "password": "admin123",
 }
+DBT_PROJECT_PATH = file_relative_path(__file__, "../dbt_transform")
+DBT_PROFILES = file_relative_path(__file__, "../dbt_transform/config")
+
+resources = {
+    "mysql_io_manager": MySQLIOManager(MYSQL_CONFIG),
+    "minio_io_manager": MinIOIOManager(MINIO_CONFIG),
+    "psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
+    # "dbt": DbtCliClientResource(
+    #     profile_dir=DBT_PROFILES,
+    #     project_dir=DBT_PROJECT_PATH,
+    # ),
+    "dbt": dbt_cli_resource.configured(
+        {
+            "project_dir": DBT_PROJECT_PATH,
+            "profiles_dir": DBT_PROFILES,
+        }
+    ),
+}
 
 defs = Definitions(
-    assets=[
-        bronze_movies,
-        bronze_keywords,
-        bronze_links,
-        bronze_credits,
-        bronze_ratings,
-        silver_cleaned_movies,
-        silver_cleaned_keywords,
-        silver_cleaned_links,
-        silver_cleaned_credits,
-        silver_cleaned_ratings,
-        warehouse_credits,
-        warehouse_keywords,
-        warehouse_links,
-        warehouse_movies,
-        warehouse_ratings,
-    ],
-    resources={
-        "mysql_io_manager": MySQLIOManager(MYSQL_CONFIG),
-        "minio_io_manager": MinIOIOManager(MINIO_CONFIG),
-        "psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
-    }
+    assets=load_assets_from_modules([assets]),
+    resources=resources,
 )

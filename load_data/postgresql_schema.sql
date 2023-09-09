@@ -27,8 +27,8 @@ CREATE TABLE movies_db.movies (
  DROP TABLE IF EXISTS movies_db.credits CASCADE;
  CREATE TABLE movies_db.credits (
    id INT4,
-   "cast" TEXT,
-   crew TEXT,
+   "cast" JSON,
+   crew JSON,
    PRIMARY KEY (id)
  );
 

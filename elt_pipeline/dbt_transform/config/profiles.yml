@@ -8,6 +8,6 @@ dbt_transform:
       port: 5432
       user: admin
       pass: admin123
-      dbname: movies_db
+      dbname: postgres
       schema: analytics
   target: dev

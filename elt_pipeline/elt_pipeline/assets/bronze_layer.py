@@ -3,7 +3,7 @@ import pandas as pd
 from dagster import asset, Output, StaticPartitionsDefinition
 
 id_partition = StaticPartitionsDefinition(
-    ["0_10000"] + [f"{i * 10000 + 1}_{(i + 1) * 10000}" for i in range(1, 6)]
+    ["0_10000"] + [f"{i * 10000 + 1}_{(i + 1) * 10000}" for i in range(1, 5)]
 )
 YEARLY = StaticPartitionsDefinition(
     [str(year) for year in range(1995, datetime.today().year)]
