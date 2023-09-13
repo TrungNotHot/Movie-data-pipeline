@@ -9,7 +9,7 @@ MYSQL_CONFIG = {
     # "host": "localhost",
     "host": "de_mysql",
     "port": 3306,
-    "database": "movies_db",
+    "database": "raw",
     "user": "admin",
     "password": "admin123",
 }

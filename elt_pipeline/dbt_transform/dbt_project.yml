@@ -36,5 +36,5 @@ models:
     # Config indicated by + and applies to all files under models/example/
     gold:
       +materialized: table
-    movies_db:
+    raw:
       +materialized: table
