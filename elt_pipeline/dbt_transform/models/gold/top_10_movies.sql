@@ -5,8 +5,8 @@ SELECT m.original_title,
 	m.vote_average,
 	m.vote_count,
 	m.genres
-FROM {{ref('movies')}} m,
-     {{ref('links')}} l
+FROM {{source('movies_db', 'movies')}} m,
+     {{source('movies_db','links')}} l
 WHERE m.id = l.movieId
 	AND m.vote_average > 8
 ORDER BY (m.vote_count * m.vote_average) DESC

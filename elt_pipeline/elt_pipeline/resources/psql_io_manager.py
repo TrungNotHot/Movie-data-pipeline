@@ -17,7 +17,7 @@ class PostgreSQLIOManager(IOManager):
 
     def handle_output(self, context: OutputContext, obj: pd.DataFrame):
         layer, schema, table = context.asset_key.path
-        temp=obj.drop(obj.index, inplace=False)
+        temp = obj.drop(obj.index, inplace=False)
         if context.has_partition_key:
             try:
                 obj.to_sql(

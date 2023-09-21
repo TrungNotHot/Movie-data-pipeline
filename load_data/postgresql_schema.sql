@@ -1,4 +1,4 @@
---create schema movies_db;
+create schema movies_db;
 DROP TABLE IF EXISTS movies_db.movies CASCADE;
 CREATE TABLE movies_db.movies (
   belongs_to_collection TEXT,

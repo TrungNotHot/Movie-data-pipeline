@@ -208,7 +208,7 @@ def silver_cleaned_movies(context, bronze_movies: pd.DataFrame) -> Output[pd.Dat
     movies_df = movies_df[
         (movies_df["vote_average"].notnull()) &
         (movies_df["vote_average"] >= 0) &
-        (movies_df["vote_average"] <= 5)
+        (movies_df["vote_average"] <= 10)
         ]
     movies_df = movies_df[movies_df["vote_count"].notnull() & (movies_df["vote_count"] >= 0)]
 
