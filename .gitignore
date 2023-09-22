@@ -2,7 +2,6 @@ postgresql/*
 movie_dataset/archive/*
 minio/*
 mysql/*
-dagster_home/logs/event.log
 dagster_home/logs/
 dagster_home/.logs_queue/
 dagster_home/.telemetry/
@@ -15,3 +14,5 @@ dataset/
 minio/
 .coverage
 .spark_session.txt
+*.log
+*.pyc
