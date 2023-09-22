@@ -1,5 +1,5 @@
 postgresql/*
-movie_dataset/archive/*
+movie_dataset/*
 minio/*
 mysql/*
 dagster_home/logs/
