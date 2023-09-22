@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: movies_db
+
+    tables:
+      - name: credits
+      - name: keywords
+      - name: links
+      - name: movies
+      - name: ratings

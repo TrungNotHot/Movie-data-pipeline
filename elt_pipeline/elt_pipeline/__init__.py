@@ -1,4 +1,4 @@
-from dagster_dbt import DbtCliClientResource, dbt_cli_resource
+from dagster_dbt import DbtCliClientResource, dbt_cli_resource, load_assets_from_dbt_project
 from .resources.minio_io_manager import MinIOIOManager
 from .resources.mysql_io_manager import MySQLIOManager
 from .resources.psql_io_manager import PostgreSQLIOManager
@@ -9,7 +9,7 @@ MYSQL_CONFIG = {
     # "host": "localhost",
     "host": "de_mysql",
     "port": 3306,
-    "database": "raw",
+    "database": "movies_db",
     "user": "admin",
     "password": "admin123",
 }
@@ -34,10 +34,6 @@ resources = {
     "mysql_io_manager": MySQLIOManager(MYSQL_CONFIG),
     "minio_io_manager": MinIOIOManager(MINIO_CONFIG),
     "psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
-    # "dbt": DbtCliClientResource(
-    #     profile_dir=DBT_PROFILES,
-    #     project_dir=DBT_PROJECT_PATH,
-    # ),
     "dbt": dbt_cli_resource.configured(
         {
             "project_dir": DBT_PROJECT_PATH,

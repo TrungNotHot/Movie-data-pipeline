@@ -36,5 +36,3 @@ models:
     # Config indicated by + and applies to all files under models/example/
     gold:
       +materialized: table
-    raw:
-      +materialized: table

@@ -13,12 +13,12 @@ YEARLY = StaticPartitionsDefinition(
 @asset(
     description="Load credits from silver to warehouse after cleaning",
     io_manager_key='psql_io_manager',
-    key_prefix=['warehouse', 'raw'],
+    key_prefix=['warehouse', 'movies_db'],
     compute_kind='Postgres',
     group_name='warehouse',
     ins={
         "silver_cleaned_credits": AssetIn(
-            key_prefix=['silver', 'raw'],
+            key_prefix=['silver', 'movies_db'],
         ),
     },
     partitions_def=id_partition,
@@ -27,7 +27,7 @@ def warehouse_credits(context, silver_cleaned_credits: pd.DataFrame) -> Output[p
     return Output(
         silver_cleaned_credits,
         metadata={
-            "schema": "raw",
+            "schema": "movies_db",
             "table": "credits",
             "row_count": silver_cleaned_credits.shape[0],
             "column_count": silver_cleaned_credits.shape[1],
@@ -38,12 +38,12 @@ def warehouse_credits(context, silver_cleaned_credits: pd.DataFrame) -> Output[p
 @asset(
     description="Load keywords from silver to warehouse after cleaning",
     io_manager_key='psql_io_manager',
-    key_prefix=['warehouse', 'raw'],
+    key_prefix=['warehouse', 'movies_db'],
     compute_kind='Postgres',
     group_name='warehouse',
     ins={
         "silver_cleaned_keywords": AssetIn(
-            key_prefix=['silver', 'raw'],
+            key_prefix=['silver', 'movies_db'],
         )
     }
 )
@@ -51,7 +51,7 @@ def warehouse_keywords(context, silver_cleaned_keywords: pd.DataFrame) -> Output
     return Output(
         silver_cleaned_keywords,
         metadata={
-            "schema": "raw",
+            "schema": "movies_db",
             "table": "keywords",
             "row_count": silver_cleaned_keywords.shape[0],
             "column_count": silver_cleaned_keywords.shape[1],
@@ -62,12 +62,12 @@ def warehouse_keywords(context, silver_cleaned_keywords: pd.DataFrame) -> Output
 @asset(
     description="Load links from silver to warehouse after cleaning",
     io_manager_key='psql_io_manager',
-    key_prefix=['warehouse', 'raw'],
+    key_prefix=['warehouse', 'movies_db'],
     compute_kind='Postgres',
     group_name='warehouse',
     ins={
         "silver_cleaned_links": AssetIn(
-            key_prefix=['silver', 'raw'],
+            key_prefix=['silver', 'movies_db'],
         )
     }
 )
@@ -75,7 +75,7 @@ def warehouse_links(context, silver_cleaned_links: pd.DataFrame) -> Output[pd.Da
     return Output(
         silver_cleaned_links,
         metadata={
-            "schema": "raw",
+            "schema": "movies_db",
             "table": "links",
             "row_count": silver_cleaned_links.shape[0],
             "column_count": silver_cleaned_links.shape[1],
@@ -86,12 +86,12 @@ def warehouse_links(context, silver_cleaned_links: pd.DataFrame) -> Output[pd.Da
 @asset(
     description="Load movies from silver to warehouse after cleaning",
     io_manager_key='psql_io_manager',
-    key_prefix=['warehouse', 'raw'],
+    key_prefix=['warehouse', 'movies_db'],
     compute_kind='Postgres',
     group_name='warehouse',
     ins={
         "silver_cleaned_movies": AssetIn(
-            key_prefix=['silver', 'raw'],
+            key_prefix=['silver', 'movies_db'],
         )
     }
 )
@@ -99,7 +99,7 @@ def warehouse_movies(context, silver_cleaned_movies: pd.DataFrame) -> Output[pd.
     return Output(
         silver_cleaned_movies,
         metadata={
-            "schema": "raw",
+            "schema": "movies_db",
             "table": "movies",
             "row_count": silver_cleaned_movies.shape[0],
             "column_count": silver_cleaned_movies.shape[1],
@@ -110,12 +110,12 @@ def warehouse_movies(context, silver_cleaned_movies: pd.DataFrame) -> Output[pd.
 @asset(
     description="Load ratings from silver to warehouse after cleaning",
     io_manager_key='psql_io_manager',
-    key_prefix=['warehouse', 'raw'],
+    key_prefix=['warehouse', 'movies_db'],
     compute_kind='Postgres',
     group_name='warehouse',
     ins={
         "silver_cleaned_ratings": AssetIn(
-            key_prefix=['silver', 'raw'],
+            key_prefix=['silver', 'movies_db'],
         )
     },
     partitions_def=YEARLY,
@@ -124,7 +124,7 @@ def warehouse_ratings(context, silver_cleaned_ratings: pd.DataFrame) -> Output[p
     return Output(
         silver_cleaned_ratings,
         metadata={
-            "schema": "raw",
+            "schema": "movies_db",
             "table": "ratings",
             "row_count": silver_cleaned_ratings.shape[0],
             "column_count": silver_cleaned_ratings.shape[1],
