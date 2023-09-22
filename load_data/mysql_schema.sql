@@ -25,34 +25,34 @@ CREATE TABLE movie (
   PRIMARY KEY (id)
 );
 
- DROP TABLE IF EXISTS credit;
- CREATE TABLE credit (
-   id INT(15),
-   cast TEXT,
-   crew TEXT,
-   PRIMARY KEY (id)
- );
-
- DROP TABLE IF EXISTS keyword;
- CREATE TABLE keyword (
-   id INT,
-   keywords TEXT,
-   PRIMARY KEY (id)
- );
-
- DROP TABLE IF EXISTS link;
- CREATE TABLE link(
-   movieId INT(15),
-   imdbId VARCHAR(15),
-   tmdbId VARCHAR(15),
-   PRIMARY KEY (movieId)
- );
-
- DROP TABLE IF EXISTS rating;
- CREATE TABLE rating(
-   userId INT(15),
-   movieId INT(15),
-   rating FLOAT,
-   timestamp DATETIME,
-   PRIMARY KEY (userId, movieId)
- );
+--  DROP TABLE IF EXISTS credit;
+--  CREATE TABLE credit (
+--    id INT(15),
+--    cast TEXT,
+--    crew TEXT,
+--    PRIMARY KEY (id)
+--  );
+-- 
+--  DROP TABLE IF EXISTS keyword;
+--  CREATE TABLE keyword (
+--    id INT,
+--    keywords TEXT,
+--    PRIMARY KEY (id)
+--  );
+-- 
+--  DROP TABLE IF EXISTS link;
+--  CREATE TABLE link(
+--    movieId INT(15),
+--    imdbId VARCHAR(15),
+--    tmdbId VARCHAR(15),
+--    PRIMARY KEY (movieId)
+--  );
+-- 
+--  DROP TABLE IF EXISTS rating;
+--  CREATE TABLE rating(
+--    userId INT(15),
+--    movieId INT(15),
+--    rating FLOAT,
+--    timestamp DATETIME,
+--    PRIMARY KEY (userId, movieId)
+--  );
