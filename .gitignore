@@ -2,3 +2,15 @@ postgresql/*
 movie_dataset/archive/*
 minio/*
 mysql/*
+dagster_home/logs/
+dagster_home/.logs_queue/
+dagster_home/.telemetry/
+dagster_home/history/
+dagster_home/schedules/*
+.cache*
+__pycache__/
+storage/
+dataset/
+minio/
+.coverage
+.spark_session.txt
