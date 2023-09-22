@@ -5,6 +5,7 @@ mysql/*
 dagster_home/logs/
 dagster_home/.logs_queue/
 dagster_home/.telemetry/
+dagster_home/.nux/
 dagster_home/history/
 dagster_home/schedules/*
 .cache*
@@ -16,3 +17,9 @@ minio/
 .spark_session.txt
 *.log
 *.pyc
+movie_dataset/preprocess/credits.csv
+movie_dataset/preprocess/credits.csv
+movie_dataset/preprocess/keywords.csv
+movie_dataset/preprocess/links.csv
+movie_dataset/preprocess/movies.csv
+movie_dataset/preprocess/ratings.csv
