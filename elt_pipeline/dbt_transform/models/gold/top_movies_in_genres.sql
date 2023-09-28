@@ -6,7 +6,7 @@ WITH movie_genre AS (
         vote_average,
         popularity
     FROM
-        movies
+        {{source('movies_db', 'movies')}} m
     where
         genres LIKE '%' || 'Romance' || '%' --change "Romance" to genres you want to
         AND vote_count IS NOT NULL

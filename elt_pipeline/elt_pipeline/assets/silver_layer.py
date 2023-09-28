@@ -14,12 +14,12 @@ YEARLY = StaticPartitionsDefinition(
     description="Load credits from bronze to silver and clean data",
     # io_manager_key='spark_io_manager',
     io_manager_key='minio_io_manager',
-    key_prefix=['silver', 'movies_dblo'],
+    key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
     ins={
         "bronze_credits": AssetIn(
-            key_prefix=['bronze', 'movies_dblo'],
+            key_prefix=['bronze', 'movies_db'],
         )
     },
     partitions_def=id_partition,
@@ -47,12 +47,12 @@ def silver_cleaned_credits(context, bronze_credits: pd.DataFrame) -> Output[pd.D
 @asset(
     description="Load ratings from bronze to silver and clean data",
     io_manager_key='minio_io_manager',
-    key_prefix=['silver', 'movies_dblo'],
+    key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
     ins={
         "bronze_ratings": AssetIn(
-            key_prefix=['bronze', 'movies_dblo'],
+            key_prefix=['bronze', 'movies_db'],
         )
     },
     partitions_def=YEARLY,
@@ -85,12 +85,12 @@ def silver_cleaned_ratings(context, bronze_ratings: pd.DataFrame) -> Output[pd.D
 @asset(
     description="Load keywords from bronze to silver and clean data",
     io_manager_key='minio_io_manager',
-    key_prefix=['silver', 'movies_dblo'],
+    key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
     ins={
         "bronze_keywords": AssetIn(
-            key_prefix=['bronze', 'movies_dblo'],
+            key_prefix=['bronze', 'movies_db'],
         )
     }
 )
@@ -120,12 +120,12 @@ def silver_cleaned_keywords(context, bronze_keywords: pd.DataFrame) -> Output[pd
 @asset(
     description="Load links from bronze to silver and clean data",
     io_manager_key='minio_io_manager',
-    key_prefix=['silver', 'movies_dblo'],
+    key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
     ins={
         "bronze_links": AssetIn(
-            key_prefix=['bronze', 'movies_dblo'],
+            key_prefix=['bronze', 'movies_db'],
         )
     }
 )
@@ -154,12 +154,12 @@ def silver_cleaned_links(context, bronze_links: pd.DataFrame) -> Output[pd.DataF
 @asset(
     description="Load movies from bronze to silver and clean data",
     io_manager_key='minio_io_manager',
-    key_prefix=['silver', 'movies_dblo'],
+    key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
     ins={
         "bronze_movies": AssetIn(
-            key_prefix=['bronze', 'movies_dblo'],
+            key_prefix=['bronze', 'movies_db'],
         )
     }
 )
