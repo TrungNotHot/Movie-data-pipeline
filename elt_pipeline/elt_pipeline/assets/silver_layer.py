@@ -1,6 +1,7 @@
 from datetime import datetime
 from dagster import asset, Output, StaticPartitionsDefinition, AssetIn
 import pandas as pd
+from ..resources.spark_io_manager import get_spark_session
 
 id_partition = StaticPartitionsDefinition(
     ["0_10000"] + [f"{i * 10000 + 1}_{(i + 1) * 10000}" for i in range(1, 5)]
@@ -84,7 +85,7 @@ def silver_cleaned_ratings(context, bronze_ratings: pd.DataFrame) -> Output[pd.D
 
 @asset(
     description="Load keywords from bronze to silver and clean data",
-    io_manager_key='minio_io_manager',
+    io_manager_key='spark_io_manager',
     key_prefix=['silver', 'movies_db'],
     compute_kind='Pandas',
     group_name='silver',
@@ -95,17 +96,17 @@ def silver_cleaned_ratings(context, bronze_ratings: pd.DataFrame) -> Output[pd.D
     }
 )
 def silver_cleaned_keywords(context, bronze_keywords: pd.DataFrame) -> Output[pd.DataFrame]:
-    # with get_spark_session() as spark:
-    #     keywords_df = spark.createDataFrame(bronze_keywords)
-    #     keywords_df.cache()
-    #     keywords_df = keywords_df.dropDuplicates()
-    #     keywords_df = keywords_df.filter(keywords_df["keywords"].isNotNull()
-    #                                      & keywords_df["keywords"] != "[]"
-    #                                      )
-    #     keywords_df = keywords_df.toPandas()
-    #     keywords_df.unpersist()
-    keywords_df = bronze_keywords.drop_duplicates()
-    keywords_df = keywords_df[keywords_df["keywords"].notnull() & keywords_df["keywords"] != "[]"]
+    with get_spark_session() as spark:
+        keywords_df = spark.createDataFrame(bronze_keywords)
+        keywords_df.cache()
+        keywords_df = keywords_df.dropDuplicates()
+        keywords_df = keywords_df.filter(keywords_df["keywords"].isNotNull()
+                                         & keywords_df["keywords"] != "[]"
+                                         )
+        keywords_df = keywords_df.toPandas()
+        keywords_df.unpersist()
+    # keywords_df = bronze_keywords.drop_duplicates()
+    # keywords_df = keywords_df[keywords_df["keywords"].notnull() & keywords_df["keywords"] != "[]"]
 
     return Output(
         keywords_df,

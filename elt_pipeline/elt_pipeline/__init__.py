@@ -1,4 +1,5 @@
 from dagster_dbt import DbtCliClientResource, dbt_cli_resource, load_assets_from_dbt_project
+from .resources.spark_io_manager import SparkIOManager
 from .resources.minio_io_manager import MinIOIOManager
 from .resources.mysql_io_manager import MySQLIOManager
 from .resources.psql_io_manager import PostgreSQLIOManager
@@ -34,6 +35,7 @@ resources = {
     "mysql_io_manager": MySQLIOManager(MYSQL_CONFIG),
     "minio_io_manager": MinIOIOManager(MINIO_CONFIG),
     "psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
+    "spark_io_manager": SparkIOManager(MINIO_CONFIG),
     "dbt": dbt_cli_resource.configured(
         {
             "project_dir": DBT_PROJECT_PATH,
