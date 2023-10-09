@@ -1,6 +1,7 @@
 from datetime import datetime
 from dagster import asset, Output, StaticPartitionsDefinition, AssetIn
 import pandas as pd
+from pyspark.sql import SparkSession
 from ..resources.spark_io_manager import get_spark_session
 
 id_partition = StaticPartitionsDefinition(
@@ -96,15 +97,17 @@ def silver_cleaned_ratings(context, bronze_ratings: pd.DataFrame) -> Output[pd.D
     }
 )
 def silver_cleaned_keywords(context, bronze_keywords: pd.DataFrame) -> Output[pd.DataFrame]:
-    with get_spark_session() as spark:
-        keywords_df = spark.createDataFrame(bronze_keywords)
-        keywords_df.cache()
-        keywords_df = keywords_df.dropDuplicates()
-        keywords_df = keywords_df.filter(keywords_df["keywords"].isNotNull()
-                                         & keywords_df["keywords"] != "[]"
-                                         )
-        keywords_df = keywords_df.toPandas()
-        keywords_df.unpersist()
+    spark = (SparkSession.builder.appName("pyspark-dataframe-demo-{}".format(datetime.today()))
+    .master("spark://spark-master:7077")      
+    .getOrCreate())
+    keywords_df = spark.createDataFrame(bronze_keywords)
+    keywords_df.cache()
+    keywords_df = keywords_df.dropDuplicates()
+    keywords_df = keywords_df.filter(keywords_df["keywords"].isNotNull()
+                                        & keywords_df["keywords"] != "[]"
+                                        )
+    keywords_df = keywords_df.toPandas()
+    keywords_df.unpersist()
     # keywords_df = bronze_keywords.drop_duplicates()
     # keywords_df = keywords_df[keywords_df["keywords"].notnull() & keywords_df["keywords"] != "[]"]
 

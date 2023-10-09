@@ -1,8 +1,8 @@
 pandas==1.5.3
-dagit==1.2.7
-dagster==1.2.7
-dagster-postgres==0.18.7
-dagster-dbt==0.18.7
+dagit
+dagster
+dagster-postgres
+dagster-dbt
 sqlalchemy==1.4.46 # or connectorx==0.3.1
 pymysql==1.0.2
 cryptography==38.0.3
@@ -17,7 +17,6 @@ dagster-aws
 dagster-spark
 boto3==1.26.57
 s3fs==0.4.2
-pyspark==3.3.2
 
 
 

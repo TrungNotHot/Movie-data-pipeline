@@ -4,33 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eadeaf0-4cb6-46ca-9261-850f0bdff62c" name="Changes" comment="">
+    <list default="true" id="60cf0615-3edd-4db2-8bfd-5f11f3b412e8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elt_pipeline/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/elt_pipeline/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/elt_pipeline/elt_pipeline/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline/assets/silver_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/elt_pipeline/elt_pipeline/assets/silver_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/01_spark_101-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/01_working_with_rdd-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/02_working_with_dataframe-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/03_working_with_sparksql-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/04_tpch_benchmark_queries-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/05_tpch_benchmark_dataframe-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/Dockerfile-checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/.ipynb_checkpoints/spark-defaults-checkpoint.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/01_spark_101.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/01_working_with_rdd.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/02_working_with_dataframe.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/03_working_with_sparksql.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/04_tpch_benchmark_queries.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/05_tpch_benchmark_dataframe.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/notebooks/spark-defaults.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/spark/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/spark/spark-defaults.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elt_pipeline/elt_pipeline_tests/spark_io_manager.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/elt_pipeline/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/elt_pipeline/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elt_pipeline/spark-defaults.conf" beforeDir="false" afterPath="$PROJECT_DIR$/elt_pipeline/spark-defaults.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/spark/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,31 +23,31 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2WKBN6aWuILAyV9cZm7hbCnnEm4" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2WWT5TPYQkGw0Gps7eFqZkgWMvl" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/trungnothot/Study/AIDE/project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1eadeaf0-4cb6-46ca-9261-850f0bdff62c" name="Changes" comment="" />
-      <created>1696471352183</created>
+      <changelist id="60cf0615-3edd-4db2-8bfd-5f11f3b412e8" name="Changes" comment="" />
+      <created>1696847153466</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696471352183</updated>
+      <updated>1696847153466</updated>
     </task>
     <servers />
   </component>
