@@ -24,4 +24,3 @@ movie_dataset/preprocess/links.csv
 movie_dataset/preprocess/movies.csv
 movie_dataset/preprocess/ratings.csv
 .idea/*
-.idea/workspace.xml

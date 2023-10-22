@@ -4,7 +4,7 @@ WITH C AS (
     WHERE vote_average IS NOT NULL
 ), m AS (
     SELECT percentile_cont(0.95) WITHIN GROUP (ORDER BY vote_count) AS minimum_votes_required
-    FROM movies
+    FROM {{source('movies_db', 'movies')}}
     WHERE vote_count IS NOT NULL
 )
 SELECT 

@@ -16,4 +16,4 @@ WITH user_gen AS (
 SELECT "userId", genres, gen_grade
 FROM ranked_gen
 WHERE row_num <= 5
-ORDER BY "userId" ASC, gen_grade DESC;
+ORDER BY "userId" ASC, gen_grade DESC

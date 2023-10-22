@@ -33,4 +33,4 @@ WHERE
     vote_count >= m
 ORDER BY
     wr DESC
-LIMIT 250;
+LIMIT 250
